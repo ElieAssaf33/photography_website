@@ -1,0 +1,1 @@
+SECRET_KEY = '!cshe*5(n$pj@1i+8g7^(kiji-q4kqpplrv)+pv^9zkt+*gz-='
