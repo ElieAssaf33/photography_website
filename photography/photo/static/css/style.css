@@ -1,0 +1,24 @@
+body{
+    font-family:sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+header ul.nav{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    text-decoration:none;
+    gap: 50px;
+}
+header .logo{
+    padding: 0.5rem;
+    font-size: 24px;
+    font-weight: 600;
+}
