@@ -1,24 +1,33 @@
 body{
     font-family:sans-serif;
+    background-color: black;
+    color: white;
 }
 a{
     text-decoration: none;
-    color: black;
+    color: white;
+}
+
+a:hover{
+    color: aqua;
 }
 header{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-decoration: none;
+    display: grid;
+    place-items: center;
 }
 header ul.nav{
     display: flex;
     flex-direction: row;
     list-style-type: none;
     text-decoration:none;
-    gap: 50px;
+    gap: 200px;
 }
 header .logo{
     padding: 0.5rem;
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
