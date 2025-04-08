@@ -5,18 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elie's Photography</title>
-    <link rel ="stylesheet" href = "{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <span class = 'logo'>Elie's Photography</span>
-        <ul class = 'nav'>
-
-            <li><a href = "{%url 'index' %}">Home</a></li>
-            <li><a href = "{%url 'portfolio'%}">Portfolio</a></li>
-            <li><a href = "{%url 'prices'%}">Prices</a></li>
-            <li><a href = "{%url 'contacts'%}">Contacts</a></li>
+        <span class="logo">Elie's Photography</span>
+        <ul class="nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="portfolio-dropdown">
+                <a href="{% url 'portfolio' %}">Portfolio</a>
+                <div class="portfolio-dropdown-content">
+                    <a href="{% url 'wedding' %}">Wedding</a>
+                    <a href="{% url 'portrait' %}">Portrait</a>
+                    <a href="{% url 'street' %}">Street</a>
+                    <a href="{% url 'nature' %}">Nature</a>
+                </div>       
+            </li>
+            <li><a href="{% url 'prices' %}">Prices</a></li>
+            <li><a href="{% url 'contacts' %}">Contact</a></li>
         </ul>
     </header>
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
 </body>
 </html>

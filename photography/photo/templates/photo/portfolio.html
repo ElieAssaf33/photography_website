@@ -1,1 +1,68 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="portfolio-container">
+    <h1 class="page-title">Portfolio</h1>
+    <p class="subtitle">Explore my work across different photography styles</p>
+
+    <div class="category-grid">
+        <!-- Wedding Category -->
+        <a href="{% url 'wedding' %}" class="category-card">
+            {% if wedding_photo %}
+            <img src="{{ wedding_photo.photo.url }}" alt="{{ wedding_photo.title|default:'Wedding Photography' }}">
+            {% else %}
+            <img src="{% static 'wedding.jpg' %}" alt="Wedding Photography">
+            {% endif %}
+            <div class="category-overlay">
+                <h2>Wedding</h2>
+                <p>Capturing your special moments</p>
+                <span class="explore-btn">Explore Gallery →</span>
+            </div>
+        </a>
+
+        <!-- Nature Category -->
+        <a href="{% url 'nature' %}" class="category-card">
+            {% if nature_photo %}
+            <img src="{{ nature_photo.photo.url }}" alt="{{ nature_photo.title|default:'Nature Photography' }}">
+            {% else %}
+            <img src="{% static 'hills.jpg' %}" alt="Nature Photography">
+            {% endif %}
+            <div class="category-overlay">
+                <h2>Nature</h2>
+                <p>Landscapes and natural beauty</p>
+                <span class="explore-btn">Explore Gallery →</span>
+            </div>
+        </a>
+
+        <!-- Street Category -->
+        <a href="{% url 'street' %}" class="category-card">
+            {% if street_photo %}
+            <img src="{{ street_photo.photo.url }}" alt="{{ street_photo.title|default:'Street Photography' }}">
+            {% else %}
+            <img src="{% static 'city_beach.jpg' %}" alt="Street Photography">
+            {% endif %}
+            <div class="category-overlay">
+                <h2>Street</h2>
+                <p>Urban life and cityscapes</p>
+                <span class="explore-btn">Explore Gallery →</span>
+            </div>
+        </a>
+
+        <!-- Portrait Category -->
+        <a href="{% url 'portrait' %}" class="category-card">
+            {% if portrait_photo %}
+            <img src="{{ portrait_photo.photo.url }}" alt="{{ portrait_photo.title|default:'Portrait Photography' }}">
+            {% else %}
+            <img src="{% static 'portrait1.jpg' %}" alt="Portrait Photography">
+            {% endif %}
+            <div class="category-overlay">
+                <h2>Portrait</h2>
+                <p>Capturing personalities</p>
+                <span class="explore-btn">Explore Gallery →</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+{% endblock content %}

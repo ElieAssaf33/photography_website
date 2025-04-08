@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="gallery-container">
+    <h1 class="section-title">{{ section_title }}</h1>
+    <p class="section-description">{{ section_description }}</p>
+
+    <div class="photo-grid">
+        {% for photo in street_photos %}
+        <div class="photo-item">
+            <img src="{{ photo.photo.url }}" alt="{{ photo.title }}" class="gallery-image">
+            {% if photo.title %}
+            <div class="photo-title">{{ photo.title }}</div>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p class="no-photos">No street photos available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,1 +1,110 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="pricing-container">
+    <h1 class="page-title">Photography Packages</h1>
+    <p class="subtitle">Choose the perfect package for your special moments</p>
+
+    <div class="pricing-grid">
+        <!-- Wedding Package -->
+        <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <h2>Wedding Package</h2>
+            <div class="price">€350</div>
+            <ul class="features">
+                <li>8 hours of coverage</li>
+                <li>2 photographers</li>
+                <li>500+ edited photos</li>
+                <li>Online gallery</li>
+                <li>Wedding album design</li>
+                <li>Engagement session included</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+
+        <!-- Event Package -->
+        <div class="pricing-card">
+            <h2>Event Package</h2>
+            <div class="price">€230</div>
+            <ul class="features">
+                <li>4 hours of coverage</li>
+                <li>1 photographer</li>
+                <li>200+ edited photos</li>
+                <li>Online gallery</li>
+                <li>Event highlights reel</li>
+                <li>Quick turnaround</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+
+        <!-- Portrait Package -->
+        <div class="pricing-card">
+            <div class="portrait-images">
+                <img src="{% static 'portrait1.jpg' %}" alt="Portrait sample 1" class="portrait-img">
+                <img src="{% static 'portrait3.jpg' %}" alt="Portrait sample 2" class="portrait-img">
+                <img src="{% static 'portrait4.jpg' %}" alt="Portrait sample 3" class="portrait-img">
+            </div>
+            <h2>Portrait Session</h2>
+            <div class="price">€175</div>
+            <ul class="features">
+                <li>2 hour session</li>
+                <li>Multiple locations</li>
+                <li>50+ edited photos</li>
+                <li>Online gallery</li>
+                <li>Print release</li>
+                <li>Style consultation</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+    </div>
+
+    <div class="pricing-grid">
+        <!-- Commercial Package -->
+        <div class="pricing-card">
+            <h2>Commercial</h2>
+            <div class="price">€120</div>
+            <ul class="features">
+                <li>Product photography</li>
+                <li>Brand-aligned editing</li>
+                <li>Commercial license</li>
+                <li>Quick delivery</li>
+                <li>Multiple angles</li>
+                <li>High-res files</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+
+        <!-- Travel Package -->
+        <div class="pricing-card">
+            <h2>Travel & Nature</h2>
+            <div class="price">€120</div>
+            <ul class="features">
+                <li>Location scouting</li>
+                <li>Landscape photography</li>
+                <li>Aerial shots available</li>
+                <li>Weather planning</li>
+                <li>Travel documentation</li>
+                <li>Story-telling approach</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+
+        <!-- Food Package -->
+        <div class="pricing-card">
+            <h2>Food Photography</h2>
+            <div class="price">€120</div>
+            <ul class="features">
+                <li>Studio lighting setup</li>
+                <li>Prop styling</li>
+                <li>Menu photography</li>
+                <li>Social media ready</li>
+                <li>Food styling tips</li>
+                <li>Restaurant-friendly</li>
+            </ul>
+            <a href="{% url 'contacts' %}" class="book-btn">Book Now</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,6 +1,143 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+<div class="hero">
+    <div class="slideshow-container">
+        <div id="image-container">
+            <img id="dynamic-image" src="{% if wedding_photo %}{{ wedding_photo.photo.url }}{% endif %}" alt="Wedding Photography">
+        </div>
+        <div class="slideshow-controls">
+            <button id="prev-btn" class="nav-btn">&lt;</button>
+            <div class="dots-container" id="dots-container"></div>
+            <button id="next-btn" class="nav-btn">&gt;</button>
+        </div>
+        <div class="slide-caption" id="slide-caption">Wedding Photography - Capturing Your Special Day</div>
+        </div>
 
+        <div class="overlay"></div>
+    </div>
+</div>
+
+<section class="category-showcase">
+    <h2 class="showcase-title">Explore Our Photography</h2>
+    <div class="showcase-grid">
+        {% if portrait_photo %}
+        <a href="{% url 'portrait' %}" class="showcase-item">
+            <img src="{{ portrait_photo.photo.url }}" alt="{{ portrait_photo.title }}" class="showcase-image">
+            <div class="showcase-overlay">
+                <h3>Portrait Photography</h3>
+                <p>Capturing personalities and moments in stunning detail</p>
+            </div>
+        </a>
+        {% endif %}
+
+        {% if wedding_photo %}
+        <a href="{% url 'wedding' %}" class="showcase-item">
+            <img src="{{ wedding_photo.photo.url }}" alt="{{ wedding_photo.title }}" class="showcase-image">
+            <div class="showcase-overlay">
+                <h3>Wedding Photography</h3>
+                <p>Preserving precious moments of your special day</p>
+            </div>
+        </a>
+        {% endif %}
+
+        {% if nature_photo %}
+        <a href="{% url 'nature' %}" class="showcase-item">
+            <img src="{{ nature_photo.photo.url }}" alt="{{ nature_photo.title }}" class="showcase-image">
+            <div class="showcase-overlay">
+                <h3>Nature Photography</h3>
+                <p>Exploring the beauty of landscapes and wildlife</p>
+            </div>
+        </a>
+        {% endif %}
+
+        {% if street_photo %}
+        <a href="{% url 'street' %}" class="showcase-item">
+            <img src="{{ street_photo.photo.url }}" alt="{{ street_photo.title }}" class="showcase-image">
+            <div class="showcase-overlay">
+                <h3>Street Photography</h3>
+                <p>Documenting urban life and candid moments</p>
+            </div>
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+
+
+<script>
+    const images = [
+        "{{ wedding_photo.photo.url|default:'' }}",
+        "{{ portrait_photo.photo.url|default:'' }}",
+        "{{ nature_photo.photo.url|default:'' }}",
+        "{{ street_photo.photo.url|default:'' }}"
+    ].filter(url => url !== '');
+
+    const captions = [
+        "Wedding Photography - Capturing Your Special Day",
+        "Portrait Photography - Personal Moments in Focus",
+        "Nature Photography - The Beauty of the Wild",
+        "Street Photography - Urban Life Unfolded"
+    ].slice(0, images.length);
+    let currentIndex = 0;
+    const dotsContainer = document.getElementById('dots-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Create dots
+    images.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    function updateCaption() {
+        const caption = document.getElementById('slide-caption');
+        caption.style.opacity = 0;
+        setTimeout(() => {
+            caption.textContent = captions[currentIndex];
+            caption.style.opacity = 1;
+        }, 250);
+    }
+
+    function updateDots() {
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        const img = document.getElementById("dynamic-image");
+        img.style.opacity = 0;
+        
+        setTimeout(() => {
+            currentIndex = index;
+            img.src = images[currentIndex];
+            img.style.opacity = 1;
+            updateDots();
+            updateCaption();
+        }, 500);
+    }
+
+    function nextSlide() {
+        goToSlide((currentIndex + 1) % images.length);
+    }
+
+    function prevSlide() {
+        goToSlide((currentIndex - 1 + images.length) % images.length);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Auto advance slides
+    const slideInterval = setInterval(nextSlide, 5000);
+
+    // Pause slideshow when hovering over controls
+    document.querySelector('.slideshow-controls').addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+</script>
 {% endblock content %}
-    
-         
