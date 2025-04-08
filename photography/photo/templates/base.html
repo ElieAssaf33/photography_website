@@ -10,24 +10,34 @@
 </head>
 <body>
     <header>
-        <span class="logo">Elie's Photography</span>
-        <ul class="nav">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li class="portfolio-dropdown">
-                <a href="{% url 'portfolio' %}">Portfolio</a>
-                <div class="portfolio-dropdown-content">
-                    <a href="{% url 'wedding' %}">Wedding</a>
-                    <a href="{% url 'portrait' %}">Portrait</a>
-                    <a href="{% url 'street' %}">Street</a>
-                    <a href="{% url 'nature' %}">Nature</a>
-                </div>       
-            </li>
-            <li><a href="{% url 'prices' %}">Prices</a></li>
-            <li><a href="{% url 'contacts' %}">Contact</a></li>
-        </ul>
+        <div class="header-content">
+                <span class="logo">Elie's Photography</span>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            <nav class="nav-container">
+                <ul class="nav">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="portfolio-dropdown">
+                        <a href="{% url 'portfolio' %}">Portfolio</a>
+                        <div class="portfolio-dropdown-content">
+                            <a href="{% url 'wedding' %}">Wedding</a>
+                            <a href="{% url 'portrait' %}">Portrait</a>
+                            <a href="{% url 'street' %}">Street</a>
+                            <a href="{% url 'nature' %}">Nature</a>
+                        </div>       
+                    </li>
+                    <li><a href="{% url 'prices' %}">Prices</a></li>
+                    <li><a href="{% url 'contacts' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         {% block content %}{% endblock content %}
     </main>
+    <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>
